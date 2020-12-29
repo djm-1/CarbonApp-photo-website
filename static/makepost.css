@@ -1,0 +1,40 @@
+.box-body{
+    margin: 5%;
+    padding: 5%;
+    border-radius: 20px;
+    border:1px solid lightgrey;
+    box-shadow: 10px 10px 10px lightgrey;
+    background-color: lavender;
+}
+.heading{
+    font-family: 'Fredoka One', cursive;
+    color: darkcyan;
+}
+.usernam{
+    font-family: 'Russo One', sans-serif;
+    font-size: 30px;
+}
+.active-user{
+    text-align: right;
+}
+.userpic{
+    width: 80px;
+    border-radius: 50%;
+}
+.post-pic{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 0 20px lightseagreen;
+    box-shadow: 0 0 20px lightseagreen;
+}
+.post-content{
+    margin: 5%;
+}
+.post-desc{
+    font-size: 25px;
+}
+.post-author{
+    margin-top: 30px;
+}

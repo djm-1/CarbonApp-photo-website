@@ -1,0 +1,27 @@
+.heading{
+    
+    font-family: 'Fredoka One', cursive;
+    font-size: 50px;
+}
+.head-box{
+    background-image: url('home-img.jpg');
+    background-size: cover;
+    text-align: center;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+.head-text{
+    color: white;
+}
+.head-desc{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.start-btn{
+    width: 400px;
+}
+.start-btn:hover{
+    color: black;
+    background-color: white;
+    border-color: white;
+}

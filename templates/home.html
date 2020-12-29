@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'home.css' %}">
+    {% endblock %}
+    <title>{% block title %} Homepage {% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <div class="head-box">
+        <div class="head-text">
+            <p class="heading" data-aos="fade-up" data-aos-duration="3000">
+            <span>Let's Connect Everyone Together</span>
+            </p>  
+            <p class="head-desc" data-aos="zoom-in" data-aos-duration="3000">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus officia provident aperiam modi? Maxime autem, ad iste corrupti dolore molestiae accusamus similique necessitatibus blanditiis tempora? Laudantium iste quis id, ea possimus doloribus voluptatibus delectus quos eligendi, facilis quaerat nam unde? Architecto eius perferendis possimus voluptate. Earum quo, optio quos sit animi voluptatum commodi impedit consequuntur nostrum adipisci laborum? Voluptas id perferendis cupiditate aliquid commodi atque voluptate. Sequi, nesciunt debitis fugit non mollitia eius temporibus praesentium unde cupiditate, fuga, exercitationem asperiores similique et corrupti in? Soluta voluptates veniam, molestiae dicta in blanditiis explicabo, deserunt laboriosam ullam atque libero consequuntur tempora omnis?  
+            </p>
+        </div>
+        <a class="btn btn-lg btn-primary start-btn" href="/profile/">Get Started</a>
+    </div>
+    {% endblock %}
+</body>
+</html>
