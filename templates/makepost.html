@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'makepost.css' %}">
+    {% endblock %}
+    <title>{% block title %}Posts{% endblock %}</title>
+</head>
+<body>
+  {% block content %} 
+  {% load crispy_forms_tags %} 
+  <div class="box-body">
+    {% if user.is_authenticated %}
+    <div class="row">
+      <div class="col-8">
+        <h1 class="heading" data-aos="fade-left" data-aos-duration="3000">
+          Create a post
+        </h1>
+      </div>
+      <div class="col-4 active-user" data-aos="fade-right" data-aos-duration="3000">
+        <span class="usernam">{{user.username}}</span>
+        <img src="/static/post_images/{{user.userprofile.profile_pic}}" alt="" class="userpic"> 
+      </div>
+    </div>
+    
+    
+    
+    <form action="/posts/" method="POST" enctype="multipart/form-data" class="bootstrap4">
+      {{form|crispy}}  
+      {{ form.errors }}
+      {% csrf_token %}
+      <button class="btn btn-primary btn-lg" type="submit" style="margin-top: 20px; margin-bottom:30px;">Post</button>
+    </form>
+    
+    
+    {% endif %}
+    <h1 class="heading" style="text-align: center;">All posts</h1>
+    {% for post in posts %}
+      <div class="post-div">
+        <div class="post-author">
+          <p style="font-weight: bolder;">Posted by : {{post.author}}</p>  
+        </div>  
+        <div class="row">
+          <div class="col-md-6" data-aos="zoom-in" data-aos-duration="3000">
+            <img src="/static/post_images/{{post.post_pic}}" alt="" class="post-pic">
+          </div>
+          <div class="col-md-6" data-aos="fade-up" data-aos-duration="3000">
+            <div class="post-content">
+              <form action="/delete/{{post.id}}">
+                {% csrf_token %}
+                
+                <p class="post-desc">{{post.post_topic}}</p>
+                {% if user.is_authenticated and user == post.author %}
+                <button type="submit" class="btn btn-lg btn-danger">Delete Post</button>
+                {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    {% endfor %}
+
+
+
+
+  </div>  
+{% endblock %}
+</body>
+</html>

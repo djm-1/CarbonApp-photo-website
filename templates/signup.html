@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load static %}
+<html>
+  <head>
+    {% block css %}
+      <link rel="stylesheet" href="{% static 'signup.css' %}">
+    {% endblock %}
+    <title>{% block title %}My profile {% endblock %}</title>
+    
+  </head>
+  <body>
+  {% block content %}
+  {% load crispy_forms_tags %}
+  <div class="box-body">
+
+    
+    <h1 class="heading">My profile</h1>
+    {% if user.is_authenticated %}
+    <h5 data-aos="fade-left" data-aos-duration="3000">
+      Welcome back, {{ user.username }} !!!
+    </h5>
+    <div class="current-profile" data-aos="zoom-in" data-aos-duration="3000">
+      <img src="/static/post_images/{{user.userprofile.profile_pic}}" alt="" class="profile-pic">
+      <div style="margin-top: 20px; margin-bottom:20px;">
+        <h4 class="usernam">{{user.username}}</h4>
+        <p class="user-bio">{{user.userprofile.profile_bio}}</p>
+      </div>
+    </div>
+    <div class="update-profile">
+      <h1 class="heading">Update profile</h1>
+      <form action="/profile/" method="POST" enctype="multipart/form-data" class="bootstrap4">
+        {{form|crispy}}  
+        {{ form.errors }}
+        {% csrf_token %}
+        <div class="btn-sub">
+        <button class="btn btn-lg btn-primary" type="submit">Update Profile</button>
+        </div>  
+      </form>
+    </div>
+    
+    {% else %}
+    <!-- <a href="{% provider_login_url 'google' %}">Login with Google</a> -->
+    <a class="btn btn-outline-dark" href="{% provider_login_url 'google' %}" role="button" style="text-transform:none;margin-top:20px;">
+      <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="" src="{% static 'google.svg' %}" />
+      Sign up with Google
+    </a>
+    {% endif %}
+
+  </div>
+  {% endblock %}
+  </body>
+</html>
